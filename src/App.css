@@ -1,0 +1,98 @@
+@keyframes bounce {
+  0%,
+  80%,
+  100% {
+    transform: scale(0);
+  }
+
+  40% {
+    transform: scale(1);
+  }
+}
+
+.animate-bounce {
+  animation: bounce 1s infinite;
+}
+
+.custom-markdown {
+  background-color: #fff !important;
+  color: #000 !important;
+}
+
+.custom-markdown h1,
+.custom-markdown h2,
+.custom-markdown h3 {
+  font-size: 16px !important;
+  font-weight: 700 !important;
+  color: #000 !important;
+}
+
+.custom-markdown p,
+.custom-markdown ul,
+.custom-markdown ol {
+  font-size: 14px !important;
+  color: #000 !important;
+}
+
+.custom-markdown code {
+  background-color: #fff !important;
+  font-size: 14px !important;
+  color: #000 !important;
+}
+
+.custom-markdown pre {
+  background-color: #fff !important;
+  border: 1px solid #fff !important;
+  padding: 8px !important;
+  border-radius: 8px !important;
+  overflow-x: auto !important;
+  color: #000 !important;
+}
+
+.custom-markdown .token {
+  color: #000 !important;
+}
+
+.custom-markdown .token.keyword {
+  color: #875bf8 !important;
+}
+.custom-markdown .token.string {
+  color: #15b097 !important;
+}
+.custom-markdown .token.number {
+  color: #eda145 !important;
+}
+.custom-markdown .token.function {
+  color: #15b097 !important;
+}
+.custom-markdown .token.comment {
+  color: #999999 !important;
+}
+.custom-markdown .token.operator {
+  color: #f5a623 !important;
+  background-color: transparent !important;
+}
+.custom-markdown .token.constant {
+  color: #f76c6c !important;
+}
+.custom-markdown .token.variable {
+  color: #f5a623 !important;
+}
+.custom-markdown .token.property {
+  color: #5ac8fa !important;
+}
+.custom-markdown .token.tag {
+  color: #ff6f61 !important;
+}
+.custom-markdown .token.url {
+  color: #7e57c2 !important;
+}
+
+/* Ensure these styles override any internal styles */
+.custom-markdown * {
+  color: #000 !important;
+}
+
+.custom-markdown pre * {
+  color: inherit !important;
+}
