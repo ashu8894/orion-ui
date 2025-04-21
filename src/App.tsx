@@ -63,46 +63,19 @@ function App() {
 };
 
 
-  const formatToMarkdown = (input: string): string => {
-  return input
-    // 🧱 Fix glued words like "SystemDesignis..."
-    .replace(/([a-z])([A-Z])/g, '$1 $2')
-    .replace(/([a-z])\s{0,1}-\s{0,1}([a-z])/gi, '$1$2') // Fix broken hyphenated words
-    .replace(/([a-z])\s{1,2}([a-z])/gi, '$1$2')         // Fix spaces mid-word like "Data base" → "Database"
-
-    // 📌 Fix Markdown: bold labels (e.g., Performance: → - **Performance:**)
-    .replace(/-\s\*\*\s*([A-Za-z0-9\s]+?)\s*\*\*\s*:/g, '\n\n- **$1:**')
-
-    // 📌 Fix headings (##, ###)
-    .replace(/\n?#\s*\*\*\s*([^\n*]+?)\s*\*\*/g, (match, title) => `\n\n## ${title.trim()}\n\n`) // "# **Title**" → "## Title"
-
-    // 🔢 Add line breaks before numbered points
-    .replace(/(\d+)\.\s*/g, '\n$1. ')
-
-    // ✅ Add newlines after each bullet
-    .replace(/\n?- \*\*[^\n]+\*\*:.*?(?=\n-|\n##|$)/gs, (match) => `${match.trim()}\n`)
-
-    // 🧼 Collapse unnecessary spacing
-    .replace(/[^\S\r\n]{2,}/g, ' ') // collapse multiple spaces
-    .replace(/\n{3,}/g, '\n\n')     // collapse multiple newlines
-
-    .trim();
-};
-
-
 
 
   
-  const updateBotMessage = (newText: string) => {
-    setMessages((prev) => {
-      const updated = [...prev];
-      updated[updated.length - 1] = {
-        ...updated[updated.length - 1],
-        text: newText,
-      };
-      return updated;
-    });
-  };
+  // const updateBotMessage = (newText: string) => {
+  //   setMessages((prev) => {
+  //     const updated = [...prev];
+  //     updated[updated.length - 1] = {
+  //       ...updated[updated.length - 1],
+  //       text: newText,
+  //     };
+  //     return updated;
+  //   });
+  // };
 
   const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === 'Enter') {
