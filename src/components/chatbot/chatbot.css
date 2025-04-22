@@ -18,3 +18,7 @@
     background: #007BA7;
     ;
 }
+
+.scroll-div::-webkit-scrollbar {
+    display: none;  /* Chrome, Safari and Opera */
+  }

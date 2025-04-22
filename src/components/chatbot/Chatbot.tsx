@@ -87,7 +87,7 @@ const Chatbot: React.FC = () => {
             </div>
 
             {/* Chat Body */}
-            <div className='basis-[70%] w-full overflow-y-auto p-4 bg-white '>
+            <div className='basis-[70%] w-full overflow-y-auto overflow-x-hidden p-4 bg-white scroll-div'>
             <div className=' bg-[red] h-[100px] w-[500px] z-[9] top-[-60px] right-[16px] pr-[50px] relative waves flex justify-end items-center'>
                 <p className='text-white text-[18px] mt-[5px] font-[500]'>Your Career assistant</p>
             </div>
