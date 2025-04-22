@@ -117,11 +117,12 @@
 .markdown-preview ol {
   display: -webkit-inline-box;
   margin: 6px 0 !important;
-  
+  padding-left: 0 !important;
+
 }
 
 .markdown-preview li {
-  display: inline-flex;
-  margin: 0 4px 0 0; /* adjust as needed */
+  display: inline-block;
+  margin: 4px 4px 4px 0; /* adjust as needed */
   padding: 0;
 }

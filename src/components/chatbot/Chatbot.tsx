@@ -45,8 +45,10 @@ const Chatbot: React.FC = () => {
 
             const data = await response.json();
 
+            const modifiedMessage = (data.message || '😓 No response from AI.').replace(/\n\n/g, '\n');
+
             const botMessage: Message = {
-                text: data.message || '😓 No response from AI.',
+                text: modifiedMessage,
                 sender: 'bot',
                 time,
             };
