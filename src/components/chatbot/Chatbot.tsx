@@ -75,7 +75,7 @@ const Chatbot: React.FC = () => {
     }, [messages, isTyping]);
 
     return (
-        <div className='h-[750px] w-[500px] rounded-[20px] overflow-hidden flex flex-col justify-between items-center' style={{boxShadow:"3px 3px 25px #808080"}}>
+        <div className='h-[95vh] w-[500px] rounded-[20px] overflow-hidden flex flex-col justify-between items-center' style={{boxShadow:"3px 3px 25px #808080"}}>
             
             {/* Header */}
             <div className='basis-[15%] header w-full flex items-center gap-[10px] pl-[30px] bg-gradient-to-r from-[#3f89ff] to-[#62b4ff]'>
