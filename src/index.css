@@ -1,3 +1,15 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+:root {
+    --main-color: #1480b7;
+    /* --main-bg:  linear-gradient(169deg,rgba(0, 89, 255, 1) 28%, rgba(148, 219, 255, 1) 88%, rgba(194, 247, 255, 1) 99%); */
+    --main-bg:  #007BA7;
+    --main-text-size: 32px;
+    --main-text-weight: 700;
+    --secondary-size: 20px;
+    --secondary-weight: 500;
+    
+  }
