@@ -117,7 +117,7 @@ const Chatbot: React.FC = () => {
                                 // <div>{msg.text}</div>
                                 <MarkdownPreview
                                     source={msg.text}
-                                    className="markdown-preview"
+                                    className="markdown-preview text-black"
                                     style={{ background: 'transparent', padding: 0 }}
                                 />
 
