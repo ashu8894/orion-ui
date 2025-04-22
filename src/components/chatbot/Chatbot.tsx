@@ -1,12 +1,14 @@
 import React, { useEffect, useRef, useState } from 'react';
 import './chatbot.css';
 import Icon from '../../assets/icon.png';
+import MarkdownPreview from "@uiw/react-markdown-preview";
+
 
 interface Message {
     text: string;
     sender: "user" | "bot";
     time?: string;
-  }
+}
 
 const Chatbot: React.FC = () => {
     const [messages, setMessages] = useState<any[]>([]);
@@ -14,58 +16,58 @@ const Chatbot: React.FC = () => {
     const [isTyping, setIsTyping] = useState(false);
     const messagesEndRef = useRef<HTMLDivElement | null>(null);
 
-    
+
 
 
     const handleSend = async () => {
         if (newMessage.trim() === '') return;
-      
+
         const time = new Date().toLocaleString('en-US', {
-          month: 'long',
-          day: 'numeric',
-          year: 'numeric',
-          hour: 'numeric',
-          minute: '2-digit',
-          hour12: true,
+            month: 'long',
+            day: 'numeric',
+            year: 'numeric',
+            hour: 'numeric',
+            minute: '2-digit',
+            hour12: true,
         });
-      
+
         const userMessage: Message = { text: newMessage, sender: 'user', time };
         setMessages((prev) => [...prev, userMessage]);
         setNewMessage('');
         setIsTyping(true);
-      
-        try {
-          const response = await fetch('https://orion-ai-v1.onrender.com/message', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ message: newMessage }),
-          });
-      
-          const data = await response.json();
-      
-          const botMessage: Message = {
-            text: data.message || '😓 No response from AI.',
-            sender: 'bot',
-            time,
-          };
 
-          console.log(botMessage)
-      
-          setMessages((prev) => [...prev, botMessage]);
+        try {
+            const response = await fetch('https://orion-ai-v1.onrender.com/message', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ message: newMessage }),
+            });
+
+            const data = await response.json();
+
+            const botMessage: Message = {
+                text: data.message || '😓 No response from AI.',
+                sender: 'bot',
+                time,
+            };
+
+            console.log(botMessage)
+
+            setMessages((prev) => [...prev, botMessage]);
         } catch (error) {
-          console.error('Error:', error);
-          setMessages((prev) => [
-            ...prev,
-            {
-              text: '😓 Oops! Something went wrong while fetching the response. Please try again.',
-              sender: 'bot',
-              time,
-            },
-          ]);
+            console.error('Error:', error);
+            setMessages((prev) => [
+                ...prev,
+                {
+                    text: '😓 Oops! Something went wrong while fetching the response. Please try again.',
+                    sender: 'bot',
+                    time,
+                },
+            ]);
         } finally {
-          setIsTyping(false);
+            setIsTyping(false);
         }
-      };
+    };
     const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
         if (e.key === 'Enter') handleSend();
     };
@@ -75,8 +77,8 @@ const Chatbot: React.FC = () => {
     }, [messages, isTyping]);
 
     return (
-        <div className='h-[95vh] w-[500px] rounded-[20px] overflow-hidden flex flex-col justify-between items-center' style={{boxShadow:"3px 3px 25px #808080"}}>
-            
+        <div className='h-[95vh] w-[500px] rounded-[20px] overflow-hidden flex flex-col justify-between items-center' style={{ boxShadow: "3px 3px 25px #808080" }}>
+
             {/* Header */}
             <div className='basis-[15%] header w-full flex items-center gap-[10px] pl-[30px] bg-gradient-to-r from-[#3f89ff] to-[#62b4ff]'>
                 <div className='w-[65px] h-[65px] rounded-full bg-white bg-center bg-cover' style={{ backgroundImage: `url("${Icon}")` }}></div>
@@ -88,9 +90,9 @@ const Chatbot: React.FC = () => {
 
             {/* Chat Body */}
             <div className='basis-[70%] w-full overflow-y-auto overflow-x-hidden p-4 bg-white scroll-div'>
-            <div className=' bg-[red] h-[100px] w-[500px] z-[9] top-[-60px] right-[16px] pr-[50px] relative waves flex justify-end items-center'>
-                <p className='text-white text-[18px] mt-[5px] font-[500]'>Your Career assistant</p>
-            </div>
+                <div className=' bg-[red] h-[100px] w-[500px] z-[9] top-[-60px] right-[16px] pr-[50px] relative waves flex justify-end items-center'>
+                    <p className='text-white text-[18px] mt-[5px] font-[500]'>Your Career assistant</p>
+                </div>
                 {messages.map((msg, idx) => (
                     <div key={idx} className={`mb-4 flex flex-col ${msg.sender === 'user' ? 'items-end' : 'items-start'}`}>
                         <div className="flex items-center mb-1 gap-2">
@@ -107,12 +109,18 @@ const Chatbot: React.FC = () => {
                             )}
                         </div>
 
-                        <div className={`p-3 max-w-[85%] text-[16px] whitespace-pre-wrap break-words shadow-lg ${msg.sender === 'user'
-                            ? 'rounded-xl bg-[#1480b7] text-white rounded-tr-none'
-                            : 'text-black bg-[#f0f2f8] rounded-xl'}`}>
+                        <div className={` max-w-[85%] text-[16px] whitespace-pre-wrap break-words shadow-lg ${msg.sender === 'user'
+                            ? 'rounded-xl bg-[#1480b7] text-white rounded-tr-none p-3'
+                            : 'text-black rounded-xl p-[1.3rem]'}`}>
                             {msg.sender === 'bot' ? (
-                                // <MarkdownPreview source={msg.text} className="custom-markdown" />
-                                <div>{msg.text}</div>
+
+                                // <div>{msg.text}</div>
+                                <MarkdownPreview
+                                    source={msg.text}
+                                    className="markdown-preview"
+                                    style={{ background: 'transparent', padding: 0 }}
+                                />
+
                             ) : (
                                 <div>{msg.text}</div>
                             )}
