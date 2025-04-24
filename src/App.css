@@ -15,7 +15,7 @@
 }
 
 .custom-markdown {
-  background-color: #fff !important;
+  background-color: #f0f2f8 !important;
   color: #000 !important;
 }
 
@@ -35,18 +35,22 @@
 }
 
 .custom-markdown code {
-  background-color: #fff !important;
+  background-color: #f0f2f8 !important;
   font-size: 14px !important;
   color: #000 !important;
 }
 
 .custom-markdown pre {
-  background-color: #fff !important;
+  background-color: #f0f2f8 !important;
   border: 1px solid #fff !important;
   padding: 8px !important;
   border-radius: 8px !important;
   overflow-x: auto !important;
   color: #000 !important;
+}
+
+.markdown-preview{
+  color: black !important;
 }
 
 .custom-markdown .token {
@@ -95,4 +99,30 @@
 
 .custom-markdown pre * {
   color: inherit !important;
+}
+
+
+.markdown-preview p {
+  margin: 4px 0 !important; /* or 2px for tighter spacing */
+  line-height: 1.2;
+}
+
+.markdown-preview h1,
+.markdown-preview h2,
+.markdown-preview h3 {
+  margin: 0px 0 !important;
+}
+
+.markdown-preview ul,
+.markdown-preview ol {
+  display: -webkit-inline-box;
+  margin: 6px 0 !important;
+  padding-left: 0 !important;
+
+}
+
+.markdown-preview li {
+  display: inline-block;
+  margin: 4px 4px 4px 0; /* adjust as needed */
+  padding: 0;
 }
